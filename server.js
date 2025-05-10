@@ -41,8 +41,8 @@ const server = http.createServer(async function (request, response) {
             }
             response.writeHead(200, { "Content-Type": "application/json" })
             response.write(data)
-            return response.end()
         })
+        return response.end()
     }
     response.writeHead(200, { "Content-Type": "text/html" })
     response.end("funny min!!!!")
