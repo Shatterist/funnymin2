@@ -32,11 +32,9 @@ const server = http.createServer(async function (request, response) {
             body += chunk;
         });
 
-        data = await function () {
-            request.on('end', () => {
-                return body
-            })
-        }
+        data = request.on('end', () => {
+            return body
+        })
         return data
     }
 
