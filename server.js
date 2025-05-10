@@ -18,10 +18,10 @@ const server = http.createServer(async function (request, response) {
     if (request.url === "/getbans") {
         const data = await getFile(bansPath)
         if (!data) {
-             response.writeHead(404, {"Content-Type": "text/html"})
-             return response.end("Error, bans.json not found.")
+            response.writeHead(404, { "Content-Type": "text/html" })
+            return response.end("Error, bans.json not found.")
         }
-        response.writeHead(200, {"Content-Type": "application/json"})
+        response.writeHead(200, { "Content-Type": "application/json" })
         response.write(data)
         return response.end()
     }
@@ -33,10 +33,11 @@ const server = http.createServer(async function (request, response) {
         });
 
         request.on('end', () => {
-             return body
+            response.end()
+            return body
         })
     }
-    response.writeHead(200, {"Content-Type": "text/html"})
+    response.writeHead(200, { "Content-Type": "text/html" })
     response.end("funny min!!!!")
 });
 
