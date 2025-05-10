@@ -26,7 +26,7 @@ const server = http.createServer(async function (request, response) {
         return response.end()
     }
     else if (request.url == "/ban" && request.method == "POST") {
-        let body = '';
+        let body = 'hgfdsa';
 
         request.on('data', chunk => {
             body += chunk;
