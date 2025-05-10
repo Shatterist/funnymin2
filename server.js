@@ -28,11 +28,11 @@ const server = http.createServer(async function (request, response) {
     else if (request.url == "/ban" && request.method == "POST") {
         let body = '';
 
-        req.on('data', chunk => {
+        request.on('data', chunk => {
             body += chunk;
         });
 
-        req.end('end', () => {
+        request.end('end', () => {
             return response.end(body)
         })
     }
