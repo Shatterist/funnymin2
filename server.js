@@ -34,6 +34,7 @@ const server = http.createServer(async function (request, response) {
 
         request.on('end', () => {
             response.end()
+            console.log(body)
             return body
         })
     }
