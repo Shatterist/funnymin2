@@ -32,7 +32,7 @@ const server = http.createServer(async function (request, response) {
             body += chunk;
         });
 
-        return response.end(body)
+        return body
     }
     response.writeHead(200, {"Content-Type": "text/html"})
     response.end("funny min!!!!")
