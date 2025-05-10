@@ -35,8 +35,10 @@ const server = http.createServer(async function (request, response) {
         data = request.on('end', () => {
             return body
         })
-        response.end()
-        return data
+
+        response.writeHead(200, {"Content-Type": "text/html"})
+        response.write(data)
+        return response.end()
     }
 
     response.writeHead(200, { "Content-Type": "text/html" })
