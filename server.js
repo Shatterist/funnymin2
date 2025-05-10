@@ -3,6 +3,7 @@ const url = require("url");
 const fs = require("fs").promises;
 
 const port = process.env.PORT || 8080;
+const bansPath = "./bans.json"
 
 async function getFile(path) {
     try {
@@ -15,7 +16,7 @@ async function getFile(path) {
 
 const server = http.createServer(async function (request, response) {
     if (request.url === "/getbans") {
-        const data = await getFile("./bans.json")
+        const data = await getFile(bansPath)
         if (!data) {
              response.writeHead(404, {"Content-Type": "text/html"})
              return response.end("Error, bans.json not found.")
@@ -25,8 +26,7 @@ const server = http.createServer(async function (request, response) {
         return response.end()
     }
     else if (request.url == "/ban" && request.method == "POST") {
-        response.writeHead(200, {"Content-Type": "text/html"})
-        return response.end("sure budy")
+        console.log(request.headers)
     }
     response.writeHead(200, {"Content-Type": "text/html"})
     response.end("funny min!!!!")
