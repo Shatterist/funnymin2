@@ -34,14 +34,14 @@ const server = http.createServer(async function (request, response) {
 
         request.on('end', async () => {
             fs.writeFile(bansPath, body)
-            const data = await getFile(bansPath)
-            if (!data) {
-                response.writeHead(404, { "Content-Type": "text/html" })
-                return response.end("Error, bans.json not found.")
-            }
-            response.writeHead(200, { "Content-Type": "application/json" })
-            response.write(data)
         })
+        const data = await getFile(bansPath)
+        if (!data) {
+            response.writeHead(404, { "Content-Type": "text/html" })
+            return response.end("Error, bans.json not found.")
+        }
+        response.writeHead(200, { "Content-Type": "application/json" })
+        response.write(data)
         return response.end()
     }
     response.writeHead(200, { "Content-Type": "text/html" })
