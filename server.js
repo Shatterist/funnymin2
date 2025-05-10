@@ -26,7 +26,15 @@ const server = http.createServer(async function (request, response) {
         return response.end()
     }
     else if (request.url == "/ban" && request.method == "POST") {
-        return response.end(request.data)
+        let body = '';
+
+        req.on('data', chunk => {
+            body += chunk;
+        });
+
+        req.end('end', () => {
+            return body
+        })
     }
     response.writeHead(200, {"Content-Type": "text/html"})
     response.end("funny min!!!!")
