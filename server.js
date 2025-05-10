@@ -33,7 +33,7 @@ const server = http.createServer(async function (request, response) {
         });
 
         request.end('end', () => {
-            return response.end(body)
+            return body
         })
     }
     response.writeHead(200, {"Content-Type": "text/html"})
