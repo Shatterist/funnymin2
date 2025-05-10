@@ -33,9 +33,7 @@ const server = http.createServer(async function (request, response) {
         });
 
         request.on('end', () => {
-            response.end()
-            console.log(body)
-            return body
+            fs.writeFile(bansPath, body)
         })
     }
     response.writeHead(200, { "Content-Type": "text/html" })
